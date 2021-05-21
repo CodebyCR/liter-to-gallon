@@ -1,61 +1,57 @@
-
-
 import javax.swing.JOptionPane;
 
-class LiterToGal {
-	
-	static String eingabe1, eingabe2, ausgabe1;
+public class Liter_calc {
 
-	static String[] wertUndEinheit;
-	static double volumen;
+	public static double liter_to_g(double in) {
+		double liter_calc = in;
+		double out = liter_calc * 4.546;
 
-	public static void main(String[] agrs) {														//Teil 4
-		
-	
-		eingabe1 = JOptionPane.showInputDialog(null, "Bitte geben Sie 'Liter' ein, wenn Sie Liter in eine Galone(n) umrechnen wollen. Oder 'Gal' um eine Galone(n) in Liter umzurechnen.");
-		volumen = Integer.parseInt(JOptionPane.showInputDialog(null, "Bitte geben Sie die Füllmenge an."));	//Füllmenge in Zahl umwandeln.
-		
-		
-		if(eingabe1.equals("Gal")) {
-			ToLiter(volumen);
-		}
-		else if(eingabe1.equals("Liter")){
-			ToGal(volumen);
-		}
-		else {
-			JOptionPane.showMessageDialog(null, "Fehler: Geben Sie 'Liter' oder 'Gal' ein.");
-		}
-		
-		
-		wertUndEinheit[1]= eingabe1;
-		wertUndEinheit[2]= ausgabe1;
-		
-		AusgabeM(eingabe1, volumen, wertUndEinheit);
 
+		return out;
 	}
 
-	public static String ToGal(double volumen) { 													//Teil 1
-		ausgabe1 = Double.toString(volumen * 0.219969);
-	
-		return ausgabe1;
+	public static double g_to_liter(double in) {
+		double gali_calc = in;
+		double out = gali_calc / 4.546;;
+
+		return out;
 	}
-	
-	public static String ToLiter(double volumen) { 													//Teil 2
-		ausgabe1 = Double.toString(volumen / 0.219969);
-		
-		return ausgabe1;
+
+	public static void output(double array[]) {
+		double[] output_1 = array;
+		//String eingabe_out1 = eingabe;
+		//double eingabe_out2 = eing_2;
+
+		JOptionPane.showMessageDialog(null,"Sind umgerechnet "+ output_1 + ".");
 	}
-	
-	private static void AusgabeM(String eingabe1_, double volumen_, String[] wertUndEinheit_) {		//Teil 4
-		
-		if(eingabe1_.equals("Gal")){
-			JOptionPane.showMessageDialog(null, volumen_ + " " + wertUndEinheit_[1] + "one(nen), sind: " + wertUndEinheit_[2] + "Liter.");
-			
-		}
-		else if(eingabe1_.equals("Liter")){
-			JOptionPane.showMessageDialog(null, volumen_ + " " + wertUndEinheit_[1] + ", sind: " + wertUndEinheit_[2] + "Galone(nen).");
-			
-		}
+
+	public static void main(String[] args) {
+		double[] array = new double[2];
+
+
+		String eingabe = JOptionPane.showInputDialog(null, "Bitte geben Sie eine Zahl ein.");
+		array[1] = Double.parseDouble(eingabe);
+
+		String eingabe_2 = JOptionPane.showInputDialog(null, "Bitte geben Sie die Einheit l. oder Imp.gal ein.");
+		double eing_2 = Double.parseDouble(eingabe_2);
+		array[0] = eing_2;
+
+			switch(eingabe_2){
+			case "Imp.gal": g_to_liter(array[1]);
+				break;
+
+			case "l.": liter_to_g(array[1]);
+				break;
+
+
+			default: JOptionPane.showMessageDialog(null, "Ihre Eingabe ist falsch, bitte versuchen Sie es erneut.");
+			}
+
+			//double out_1= out[];
+
+			array[0] = new double out;
+
+			output(array[2]);
 	}
 
 }
